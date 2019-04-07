@@ -3,7 +3,7 @@ import subprocess
 import atexit
 import getpass
 
-#os.system('clear')
+os.system('clear')
 
 username = getpass.getuser()
 
@@ -26,8 +26,6 @@ def main():
     users = subprocess.check_output('ls /home',shell=True).decode('utf-8')
 
     userlist=(users.split())
-
-    os.system('clear')
 
     you = input('Your username: ')
 
