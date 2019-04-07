@@ -6,8 +6,7 @@ import getpass
 username = getpass.getuser()
 
 def rootlogin():
-    if __name__=='__main__':
-        pritn('ree')
+    if __name__=='__main__':)
         os.system('sudo python3 cppasswordslin.py')
     else:
         try:
