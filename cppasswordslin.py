@@ -27,7 +27,7 @@ def main():
 
     userlist=(users.split())
 
-    #os.system('clear')
+    os.system('clear')
 
     you = input('Your username: ')
 
