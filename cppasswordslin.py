@@ -3,14 +3,20 @@ import subprocess
 import atexit
 import getpass
 
-os.system('clear')
-
 username = getpass.getuser()
 
 def rootlogin():
-    os.system('sudo python3 cppasswordslin.py')
+    if __name__=='__main__':
+        pritn('ree')
+        os.system('sudo python3 cppasswordslin.py')
+    else:
+        try:
+            subprocess.call('sudo python3 cp.py'.split())
+        except OSError:
+            exit()
 
-def checkroot():
+def main():
+    os.system('clear')
     if username != 'root':
         print('In order to run this script you need to be root')
         while True:
@@ -22,7 +28,6 @@ def checkroot():
                 break
             else:
                 continue
-def main():
     users = subprocess.check_output('ls /home',shell=True).decode('utf-8')
 
     userlist=(users.split())
@@ -48,5 +53,4 @@ def main():
     input('Done')
     exit()
 if __name__=='__main__':
-    checkroot()
     main()
