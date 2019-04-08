@@ -31,4 +31,4 @@ def main():
     os.system('sudo ufw enable')
 
 if __name__ == '__main__':
-    main('test1 test2')
+    main()
