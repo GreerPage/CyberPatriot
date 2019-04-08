@@ -16,7 +16,6 @@ def rootlogin():
 def main():
     if __name__ == '__main__':
         os.system('clear')
-    if __name__=='__main__':
         if username != 'root':
             print('In order to run this script you need to be root')
             while True:
