@@ -14,19 +14,29 @@ def rootlogin():
         except OSError:
             exit()
 
+def usercheck(name):
+    try:
+        tryname = subprocess.check_output('getent passwd {}'.format(name), shell=True)
+        return True
+    except OSError:
+        return False
+    except subprocess.CalledProcessError:
+        return False
+
 def main():
-    os.system('clear')
-    if username != 'root':
-        print('In order to run this script you need to be root')
-        while True:
-            exitc = input('Would you like to restart the script as root? [Y/n] ').lower()
-            if exitc=='y':
-                atexit.register(rootlogin)
-                exit()
-            if exitc=='n':
-                break
-            else:
-                continue
+    if __name__ == '__main__':
+        os.system('clear')
+        if username != 'root':
+            print('In order to run this script you need to be root')
+            while True:
+                exitc = input('Would you like to restart the script as root? [Y/n] ').lower()
+                if exitc=='y':
+                    atexit.register(rootlogin)
+                    exit()
+                if exitc=='n':
+                    break
+                else:
+                    continue
     users = subprocess.check_output('ls /home',shell=True).decode('utf-8')
 
     userlist=(users.split())
@@ -39,17 +49,24 @@ def main():
         userlist.remove(you)
     except ValueError:
         print("username entered is invalid! exiting...")
-        exit()
+        if __name__=='__main__':
+            exit()
 
     userlist=sorted(userlist)
 
     for word in userlist:
-        password="Cyb3rP4tr10t#" + str(unique)
-        print(word + ": " + password)
-        os.system("echo {}:{} | /usr/sbin/chpasswd".format(word, password))
-        unique=unique+1
+        tryname = usercheck(word)
+        if tryname==False:
+            continue
+        if tryname==True:
+            password="Cyb3rP4tr10t#" + str(unique)
+            print(word + ": " + password)
+            os.system("echo {}:{} | /usr/sbin/chpasswd".format(word, password))
+            unique=unique+1
 
     input('Done')
-    exit()
+    if __name__=='__main__':
+        exit()
+
 if __name__=='__main__':
     main()

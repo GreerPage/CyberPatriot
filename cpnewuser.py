@@ -37,6 +37,8 @@ def main(usernames, admin=False):
                     break
                 else:
                     continue
+    #print(usernames)
+    #print(admin)
     usernames = usernames.split()
     for user in usernames:
         tryname = usercheck(user)
@@ -51,4 +53,3 @@ def main(usernames, admin=False):
         if tryname==True:
             print('{}: user already exists'.format(user))
             continue
-main('greer')
