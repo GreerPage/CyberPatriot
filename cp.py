@@ -28,6 +28,8 @@ class bcolors:
 def rootlogin():
         os.system('sudo python3 cp.py')
 
+print('\33]0;CyberPatriot\a', end='', flush=True)
+
 if username != 'root':
     os.system('clear')
     print('In order to run this script you need to be root')
@@ -44,7 +46,6 @@ else:
     os.system('clear')
 
 def main():
-    print('\33]0;CyberPatriot\a', end='', flush=True)
     if username=='root':
         char = '#'
     else:
@@ -64,10 +65,31 @@ def main():
         cppasswordslin.main()
         main()
     if command.startswith('2'):
-        command = command.split()
-        arg1 = command[1]
-        arg2 = command[2]
-        cpnewuser.main(arg1, arg2)
+        commands = command.split()
+        try:
+            arg1 = commands[1]
+            try:
+                arg2 = commands[2]
+                if arg2 in ['admin=True', 'admin = True', 'True']:
+                    cpnewuser.main(arg1, admin=True)
+                else:
+                    cpnewuser.main(arg1)
+            except IndexError:
+                cpnewuser.main(arg1)
+        except IndexError:
+            print('Error: no username entered')
+            main()
+        main()
+    if command.startswith('3'):
+        if command=='3':
+            print('Error: no usernames entered')
+            main()
+        else:
+            usernames = command.replace('3 ', '')
+            cprmuser.main(usernames)
+        main()
+    if command=='4':
+        fw.main()
         main()
     if command=='help':
         print('CyberPatriot help menu')
@@ -81,9 +103,7 @@ def main():
         if x==True:
             main()
         else:
-            print('')
-            print('{}Error: {}: not a CyberPatriot command{}'.format(bcolors.bold, command, bcolors.end))
-            print('')
+            print('Error: {}: not a CyberPatriot command'.format(command))
             main()
 
 if __name__=='__main__':
