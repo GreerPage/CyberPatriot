@@ -57,17 +57,13 @@ def main():
                 print(word + ": " + password)
                 os.system("echo {}:{} | /usr/sbin/chpasswd".format(word, password))
                 unique=unique+1
-
         if __name__=='__main__':
             input('Done')
             exit()
-
     except ValueError:
         print("Error: username entered is invalid")
         if __name__=='__main__':
             exit()
-
-
 
 if __name__=='__main__':
     main()
