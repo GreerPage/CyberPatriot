@@ -109,7 +109,7 @@ def main():
     if command=='help':
         print('CyberPatriot help menu')
         print('1: change all local user account passwords')
-        print('2: add user accounts (2 <username>) if admin (2 <username> admin=True)')
+        print('2: add user accounts (2 <username>) if admin (2 <username>, admin=True)')
         print('3: remove user accounts (3 <usernames>)')
         print('4: enable ufw')
         print('5: list all real users')
