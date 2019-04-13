@@ -37,19 +37,21 @@ def main(usernames, admin=False):
                     break
                 else:
                     continue
-    #print(usernames)
-    #print(admin)
+
     usernames = usernames.split()
     for user in usernames:
-        tryname = usercheck(user)
-        if tryname==False:
-            os.system('useradd {}'.format(user))
-            os.system('mkhomedir_helper {}'.format(user))
-            if admin == True:
-                os.system('usermod -aG sudo {}'.format(user))
-                print('added admin user: {}'.format(user))
-            if admin==False:
-                print('added user: {}'.format(user))
-        if tryname==True:
-            print('{}: user already exists'.format(user))
-            continue
+            tryname = usercheck(user)
+            if tryname==False:
+                if admin in [True, False]:
+                    os.system('useradd {}'.format(user))
+                    #os.system('mkhomedir_helper {}'.format(user))
+                    if admin == True:
+                        os.system('usermod -aG sudo {}'.format(user))
+                        print('added admin user: {}'.format(user))
+                    if admin==False:
+                        print('added user: {}'.format(user))
+                else:
+                    print('Error: {}: invalid value for admin'.format(admin))
+            if tryname==True:
+                print('{}: user already exists'.format(user))
+                continue

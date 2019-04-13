@@ -46,3 +46,4 @@ def main(usernames):
         if tryname==True:
             os.system('userdel {}'.format(user))
             print('removed user: {}'.format(user))
+            continue

@@ -61,8 +61,9 @@ def main():
         if __name__=='__main__':
             input('Done')
             exit()
+
     except ValueError:
-        print("username entered is invalid! exiting...")
+        print("Error: username entered is invalid")
         if __name__=='__main__':
             exit()
 
