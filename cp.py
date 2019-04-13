@@ -91,21 +91,6 @@ def main():
             else:
                 newuser = command.replace('2', '')
                 cpnewuser.main(newuser)
-        '''
-        try:
-            arg1 = commands[1]
-            try:
-                arg2 = commands[2]
-                if arg2 in ['admin=True', 'admin = True', 'True']:
-                    cpnewuser.main(arg1, admin=True)
-                else:
-                    cpnewuser.main(arg1)
-            except IndexError:
-                cpnewuser.main(arg1)
-        except IndexError:
-            print('Error: no username entered')
-            main()
-        '''
         main()
     if command.startswith('3'):
         if command=='3':
