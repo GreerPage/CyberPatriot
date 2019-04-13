@@ -37,7 +37,7 @@ def main():
                     break
                 else:
                     continue
-    users = subprocess.check_output('ls /home',shell=True).decode('utf-8')
+    users = subprocess.check_output("awk -F: '$NF!~/\/false$/ && $NF!~/\/nologin$/ && $6~/\/home/{print $1}' /etc/passwd",shell=True).decode('utf-8')
 
     userlist=(users.split())
 
