@@ -47,26 +47,26 @@ def main():
 
     try:
         userlist.remove(you)
+        userlist=sorted(userlist)
+        for word in userlist:
+            tryname = usercheck(word)
+            if tryname==False:
+                continue
+            if tryname==True:
+                password="Cyb3rP4tr10t#" + str(unique)
+                print(word + ": " + password)
+                os.system("echo {}:{} | /usr/sbin/chpasswd".format(word, password))
+                unique=unique+1
+
+        if __name__=='__main__':
+            input('Done')
+            exit()
     except ValueError:
         print("username entered is invalid! exiting...")
         if __name__=='__main__':
             exit()
 
-    userlist=sorted(userlist)
 
-    for word in userlist:
-        tryname = usercheck(word)
-        if tryname==False:
-            continue
-        if tryname==True:
-            password="Cyb3rP4tr10t#" + str(unique)
-            print(word + ": " + password)
-            os.system("echo {}:{} | /usr/sbin/chpasswd".format(word, password))
-            unique=unique+1
-
-    input('Done')
-    if __name__=='__main__':
-        exit()
 
 if __name__=='__main__':
     main()
