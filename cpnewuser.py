@@ -44,7 +44,6 @@ def main(usernames, admin=False):
             if tryname==False:
                 if admin in [True, False]:
                     os.system('useradd {}'.format(user))
-                    #os.system('mkhomedir_helper {}'.format(user))
                     if admin == True:
                         os.system('usermod -aG sudo {}'.format(user))
                         print('added admin user: {}'.format(user))
