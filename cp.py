@@ -68,6 +68,15 @@ def main():
         exit()
     if command=='':
         main()
+    if command =='0':
+        if username != 'root':
+            print('restarting sript as root...')
+            atexit.register(rootlogin)
+            exit()
+        else:
+            print('Error: you are already logged in as root')
+            main()
+        main()
     if command=='1':
         cppasswordslin.main()
         main()
@@ -108,6 +117,7 @@ def main():
         main()
     if command=='help':
         print('CyberPatriot help menu')
+        print('0: log in as root')
         print('1: change all local user account passwords')
         print('2: add user accounts (2 <username>) if admin (2 <username>, admin=True)')
         print('3: remove user accounts (3 <usernames>)')
