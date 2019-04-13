@@ -28,6 +28,13 @@ class bcolors:
 def rootlogin():
         os.system('sudo python3 cp.py')
 
+def after(value, a):
+    pos_a = value.rfind(a)
+    if pos_a == -1: return ""
+    adjusted_pos_a = pos_a + len(a)
+    if adjusted_pos_a >= len(value): return ""
+    return value[adjusted_pos_a:]
+
 print('\33]0;CyberPatriot\a', end='', flush=True)
 
 if username != 'root':
@@ -66,6 +73,25 @@ def main():
         main()
     if command.startswith('2'):
         commands = command.split()
+        check = after(command, ', ')
+        if check in ['True', 'admin=True', 'admin = True']:
+            newuser = command.replace(check, '')
+            newuser = newuser.replace('2', '')
+            newuser = newuser.replace(', ', '')
+            newuser = newuser.replace(',', '')
+            cpnewuser.main(newuser, admin=True)
+        else:
+            check = after(command, ',')
+            if check in ['True', 'admin=True', 'admin = True']:
+                newuser = command.replace(check, '')
+                newuser = newuser.replace(', ', '')
+                newuser = newuser.replace('2', '')
+                newuser = newuser.replace(',', '')
+                cpnewuser.main(newuser, admin=True)
+            else:
+                newuser = command.replace('2', '')
+                cpnewuser.main(newuser)
+        '''
         try:
             arg1 = commands[1]
             try:
@@ -79,6 +105,7 @@ def main():
         except IndexError:
             print('Error: no username entered')
             main()
+        '''
         main()
     if command.startswith('3'):
         if command=='3':
