@@ -10,6 +10,7 @@ import readline
 import rlcompleter
 import signal
 import logging
+import indivpasswd
 
 username = getpass.getuser()
 
@@ -117,6 +118,9 @@ def main():
     if command=='5':
         os.system("awk -F: '$NF!~/\/false$/ && $NF!~/\/nologin$/ && $6~/\/home/{print $1}' /etc/passwd")
         main()
+    if command=='6':
+        indivpasswd.main()
+        main()
     if command=='help':
         print('CyberPatriot help menu')
         print('0: log in as root')
@@ -125,6 +129,7 @@ def main():
         print('3: remove user accounts (3 <usernames>)')
         print('4: enable ufw')
         print('5: list all real users')
+        print('6: change individual user password')
         main()
     else:
         x = command.isspace()
