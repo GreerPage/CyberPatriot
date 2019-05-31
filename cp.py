@@ -135,7 +135,7 @@ def main():
         print('3: remove user accounts (3 <usernames>)')
         print('4: enable ufw')
         print('5: list all real users')
-        print('6: change individual user password')
+        print('6: change individual user password (6 <username> <password>)')
         main()
     else:
         x = command.isspace()
