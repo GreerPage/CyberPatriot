@@ -15,13 +15,9 @@ def rootlogin():
             exit()
 
 def usercheck(name):
-    try:
-        tryname = subprocess.check_output('getent passwd {}'.format(name), shell=True)
-        return True
-    except OSError:
-        return False
-    except subprocess.CalledProcessError:
-        return False
+        users = subprocess.check_output("awk -F: '$NF!~/\/false$/ && $NF!~/\/nologin$/ && $6~/\/home/{print $1}' /etc/passwd",shell=True).decode('utf-8')
+        if name in users: return True
+        else: return False
 
 def main(usernames, admin=False):
     if __name__ == '__main__':
