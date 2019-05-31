@@ -23,7 +23,7 @@ def usercheck(name):
     except subprocess.CalledProcessError:
         return False
 
-def main():
+def main(passusername, password):
     if __name__ == '__main__':
         os.system('clear')
         if username != 'root':
@@ -38,10 +38,8 @@ def main():
                 else:
                     continue
 
-    passusername = input('Username: ')
     check = usercheck(passusername)
     if check==True:
-        password = input('Password: ')
         os.system("echo {}:{} | /usr/sbin/chpasswd".format(passusername, password))
         print('{}: {}'.format(passusername, password))
     if check==False:

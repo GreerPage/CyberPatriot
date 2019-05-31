@@ -118,8 +118,14 @@ def main():
     if command=='5':
         os.system("awk -F: '$NF!~/\/false$/ && $NF!~/\/nologin$/ && $6~/\/home/{print $1}' /etc/passwd")
         main()
-    if command=='6':
-        indivpasswd.main()
+    if command.startswith('6 '):
+        try:
+            sixusername = command.split()[1]
+            sixpassword = command.split()[2]
+        except IndexError:
+            print('Error: you must enter a username and password: 6 <username> <password>')
+            main()
+        indivpasswd.main(sixusername, sixpassword)
         main()
     if command=='help':
         print('CyberPatriot help menu')
