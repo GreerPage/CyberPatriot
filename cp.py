@@ -127,6 +127,9 @@ def main():
             main()
         indivpasswd.main(sixusername, sixpassword)
         main()
+    if command=='6':
+        print('Error: you must enter a username and password: 6 <username> <password>')
+        main()
     if command=='help':
         print('CyberPatriot help menu')
         print('0: log in as root')
