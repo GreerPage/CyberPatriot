@@ -11,6 +11,7 @@ import rlcompleter
 import signal
 import logging
 import indivpasswd
+import cpuid
 
 username = getpass.getuser()
 
@@ -130,6 +131,10 @@ def main():
     if command=='6':
         print('Error: you must enter a username and password: 6 <username> <password>')
         main()
+    if command.startswith('7'):
+            sevenusername = command.split() [1]
+            cpuid.main(sevenusername)
+            main()
     if command=='help':
         print('CyberPatriot help menu')
         print('0: log in as root')
@@ -139,6 +144,7 @@ def main():
         print('4: enable ufw')
         print('5: list all real users')
         print('6: change individual user password (6 <username> <password>)')
+        print('7: find uid of  user (7 <username>)')
         main()
     else:
         x = command.isspace()

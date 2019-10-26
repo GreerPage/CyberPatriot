@@ -41,6 +41,8 @@ def main():
 
     unique = 1
 
+    filecontent = ''
+
     try:
         userlist.remove(you)
         userlist=sorted(userlist)
@@ -50,9 +52,14 @@ def main():
                 continue
             if tryname==True:
                 password="Cyb3rP4tr10t#" + str(unique)
-                print(word + ": " + password)
+                toprint = word + ": " + password
+                print(toprint)
                 os.system("echo {}:{} | /usr/sbin/chpasswd".format(word, password))
                 unique=unique+1
+                filecontent += toprint + '\n'
+        file = open('passwords.txt', 'w')
+        file.write(filecontent)
+        file.close()
         if __name__=='__main__':
             input('Done')
             exit()
