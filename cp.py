@@ -11,7 +11,6 @@ import rlcompleter
 import signal
 import logging
 import indivpasswd
-import cpuid
 
 username = getpass.getuser()
 
