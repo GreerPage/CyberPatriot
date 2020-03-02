@@ -2,11 +2,10 @@
 **Important:** please follow the competion guidelines when using these scripts. This project was written for linux and will not work on windows machines.
 
 ## How to Use
-- Run cp.py in terminal by typing sudo python3 cp.py (you need to run it as root).</li>
+- Run cp.py in terminal by typing ```sudo python3 cp.py``` (you need to run it as root).</li>
 - If you forgot to run it as root, you will be prompted to rerun the script and enter your sudo password. You must do so to continue.
-- once in the script you will see a command line interface. Type "help" for a list of commands.
+- once in the script you will see a command line interface. Type ```help``` for a list of commands.
 - Note: each of this scripts can be run idividually if you wish to do so.
-
 ## Commands
 - 0: Log in as root
 - 1: Change all user passwords
