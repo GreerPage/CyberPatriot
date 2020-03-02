@@ -9,7 +9,7 @@
 ## Commands
 - 0: Log in as root
 - 1: Change all user passwords
-- 2: add user accounts (2 username) if admin (2 username, admin=True)
+- 2: add user accounts (2 usernames) if admin (2 usernames, admin=True)
 - 3: remove user accounts (3 usernames)
 - 4: enable ufw
 - 5: list all real users
